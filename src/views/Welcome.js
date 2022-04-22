@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Screen, Container, Title, Subtitle, Text, Input, Button } from '../components';
 
-function Welcome() {
+function Welcome({ next }) {
   return (
     <Screen>
       <Container center>
@@ -17,7 +17,7 @@ function Welcome() {
       </Container>
 
       <Container>
-        <Button>Comencemos</Button>
+        <Button onClick={next}>Comencemos</Button>
       </Container>
     </Screen>
   )
