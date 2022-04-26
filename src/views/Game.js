@@ -4,7 +4,7 @@ import questionsFx from '../fixtures/questions';
 import { Screen, Container, Subtitle, Text, Button } from '../components';
 
 const AnswerContainer = styled.div`
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: flex-end;
 `;
