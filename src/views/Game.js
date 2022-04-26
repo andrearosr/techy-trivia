@@ -7,15 +7,26 @@ function Game({ next }) {
   const [selectedQuestion, setSelectedQuestion] = useState();
   const [timer, setTimer] = useState(15);
 
+  function selectNextQuestion() {
+    const index = Math.floor(Math.random() * questions.length);
+    setSelectedQuestion(questions[index]);
+  }
+
   useEffect(() => {
     setTimeout(() => {
-      if (timer > 0) setTimer(timer - 1);
+      if (timer > 0) {
+        setTimer(timer - 1);
+      }
+      
+      if (timer === 0) {
+        selectNextQuestion();
+        setTimer(15);
+      }
     }, 1000);
   }, [timer]);
 
   useEffect(() => {
-    const index = Math.floor(Math.random() * (questions.length - 1));
-    setSelectedQuestion(questions[index]);
+    selectNextQuestion();
   }, []);
 
   if (!selectedQuestion) return;

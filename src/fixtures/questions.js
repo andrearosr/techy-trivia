@@ -6,6 +6,15 @@ export default [
       "Física",
       "Abogada",
     ],
-    answer: 1,
+    answer: 0,
+  },
+  {
+    title: "Ida Holz es una ingeniera, informática, profesora e investigadora. Se la conoce como la madre de internet. ¿En qué país nació?",
+    options: [
+      "Estados Unidos",
+      "Francia",
+      "Uruguay",
+    ],
+    answer: 2
   }
 ]
