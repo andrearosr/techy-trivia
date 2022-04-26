@@ -1,15 +1,23 @@
 import { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
 import { Screen, Container, Subtitle, Text, Button } from '../components';
 
-function Game({ next }) {
+const AnswerContainer = styled.div`
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+`;
+
+function Game() {
   const [questions, setQuestions] = useState(questionsFx);
-  const [selectedQuestion, setSelectedQuestion] = useState();
+  const [currentQuestion, setCurrentQuestion] = useState();
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [timer, setTimer] = useState(15);
 
   function selectNextQuestion() {
     const index = Math.floor(Math.random() * questions.length);
-    setSelectedQuestion(questions[index]);
+    setCurrentQuestion(questions[index]);
   }
 
   useEffect(() => {
@@ -17,7 +25,7 @@ function Game({ next }) {
       if (timer > 0) {
         setTimer(timer - 1);
       }
-      
+
       if (timer === 0) {
         selectNextQuestion();
         setTimer(15);
@@ -29,20 +37,42 @@ function Game({ next }) {
     selectNextQuestion();
   }, []);
 
-  if (!selectedQuestion) return;
+  function pickAnswer(option) {
+    return () => {
+      if (!selectedAnswer) {
+        setSelectedAnswer(option)
+      }
+    }
+  }
+
+  function renderAnswer() {
+    if (selectedAnswer === null) {
+      return (<Text>Selecciona una opción:</Text>)
+    } else if (selectedAnswer === currentQuestion.answer) {
+      return (<Text>¡Correcto!</Text>)
+    } else {
+      return (<Text>¡Incorrecto!</Text>)
+    }
+  }
+
+  if (!currentQuestion) return;
   return (
     <Screen>
       <Container>
         <Subtitle>
-          {selectedQuestion.title}
+          {currentQuestion.title}
         </Subtitle>
       </Container>
 
       <Container center>
-        <Text>Selecciona una opción:</Text><br />
-        {selectedQuestion.options.map(option => (
+        <AnswerContainer>
+          {renderAnswer()}
+        </AnswerContainer>
+        {currentQuestion.options.map((option, index) => (
           <>
-            <Button onClick={next}>{option}</Button>
+            <Button onClick={pickAnswer(index)} key={window.btoa(option)}>
+              {option}
+            </Button>
             <br />
           </>
         ))}
