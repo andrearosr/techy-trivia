@@ -28,6 +28,7 @@ function Game() {
 
       if (timer === 0) {
         selectNextQuestion();
+        setSelectedAnswer(null);
         setTimer(15);
       }
     }, 1000);
@@ -43,6 +44,16 @@ function Game() {
         setSelectedAnswer(option)
       }
     }
+  }
+
+  function getButtonFontColor(option) {
+    return option === selectedAnswer ? 'black' : 'white'
+  }
+
+  function getButtonBackground(option) {
+    if (selectedAnswer === null || option !== selectedAnswer) return '#333';
+    else if (selectedAnswer === currentQuestion.answer) return 'green';
+    else return 'red';
   }
 
   function renderAnswer() {
@@ -70,7 +81,12 @@ function Game() {
         </AnswerContainer>
         {currentQuestion.options.map((option, index) => (
           <>
-            <Button onClick={pickAnswer(index)} key={window.btoa(option)}>
+            <Button
+              key={window.btoa(option)}
+              onClick={pickAnswer(index)}
+              fontColor={getButtonFontColor(index)}
+              background={getButtonBackground(index)}
+            >
               {option}
             </Button>
             <br />

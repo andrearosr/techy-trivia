@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Input = styled.input`
-  height: 40px;
+  height: 45px;
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
@@ -11,15 +11,17 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 100%;
-  height: 40px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00D0AD;
-  color: black;
   border-radius: 30px;
-  border: 1px solid #00D0AD;
-  font-weight: 600;
+  border: 1px solid transparent;
+  font-weight: 500;
+  transition: 0.5s;
+  
+  background: ${props => props.background || '#00D0AD'};
+  color: ${props => props.fontColor || 'black'};
 `;
 
 export { Input, Button };
