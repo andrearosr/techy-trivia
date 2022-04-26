@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Screen, Container, Title, Subtitle, Text, Input, Button } from '../components';
+import { Screen, Container, Subtitle, Text, Button } from '../components';
 
 function Game({ next }) {
   const [timer, setTimer] = useState(15);

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Screen, Container, Title, Subtitle, Text, Input, Button } from '../components';
+import { useNavigate } from "react-router-dom";
+import { Screen, Container, Title, Subtitle, Text, Button } from '../components';
 
-function Start({ next }) {
+function Start() {
+  const navigate = useNavigate();
   const [timer, setTimer] = useState(-1);
 
   const start = () => setTimer(3);
@@ -9,9 +11,9 @@ function Start({ next }) {
   useEffect(() => {
     setTimeout(() => {
       if (timer > 0) setTimer(timer - 1);
-      if (timer === 0) next()
+      if (timer === 0) navigate("/game", { replace: true })
     }, 1000);
-  }, [timer]);
+  }, [timer, navigate]);
 
   return (
     <Screen>

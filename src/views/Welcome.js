@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Screen, Container, Title, Subtitle, Text, Input, Button } from '../components';
 
-function Welcome({ next }) {
+function Welcome() {
   return (
     <Screen>
       <Container center>
@@ -17,7 +17,9 @@ function Welcome({ next }) {
       </Container>
 
       <Container>
-        <Button onClick={next}>Comencemos</Button>
+        <Button as={Link} to="/start" replace>
+          Comencemos
+        </Button>
       </Container>
     </Screen>
   )

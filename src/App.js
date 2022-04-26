@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { RecoilRoot } from 'recoil';
+import { Routes, Route } from "react-router-dom";
 import { Global, css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Welcome from './views/Welcome';
@@ -26,6 +26,10 @@ const GlobalStyles = css`
     margin: 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   #root {
     width: 100vw;
     height: 100vh;
@@ -34,15 +38,15 @@ const GlobalStyles = css`
 `
 
 function App() {
-  const [screen, setScreen] = useState(0);
-
   return (
     <RecoilRoot>
       <Global styles={GlobalStyles} />
       <Root>
-        {screen === 0 && <Welcome next={() => setScreen(1)} />}
-        {screen === 1 && <Start next={() => setScreen(2)} />}
-        {screen === 2 && <Game />}
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/start" element={<Start />} />
+          <Route path="/game" element={<Game />} />
+        </Routes>
       </Root>
     </RecoilRoot>
   );
