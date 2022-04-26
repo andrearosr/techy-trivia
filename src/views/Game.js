@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import questionsFx from '../fixtures/questions';
 import { Screen, Container, Subtitle, Text, Button } from '../components';
 
 function Game({ next }) {
+  const [questions, setQuestions] = useState(questionsFx);
+  const [selectedQuestion, setSelectedQuestion] = useState();
   const [timer, setTimer] = useState(15);
 
   useEffect(() => {
@@ -10,23 +13,29 @@ function Game({ next }) {
     }, 1000);
   }, [timer]);
 
+  useEffect(() => {
+    const index = Math.floor(Math.random() * (questions.length - 1));
+    setSelectedQuestion(questions[index]);
+  }, []);
+
+  if (!selectedQuestion) return;
   return (
     <Screen>
       <Container>
         <Subtitle>
-          Hedy Lamarr fue una inventora que creó un sistema que luego inspiraría el wifi. <br />
-          ¿Qué otra profesión tenía?
+          {selectedQuestion.title}
         </Subtitle>
       </Container>
 
       <Container center>
         <Text>Selecciona una opción:</Text><br />
-        <Button onClick={next}>Actriz de Hollywood</Button>
-        <br />
-        <Button onClick={next}>Física</Button>
-        <br />
-        <Button onClick={next}>Abogada</Button>
-        <br />
+        {selectedQuestion.options.map(option => (
+          <>
+            <Button onClick={next}>{option}</Button>
+            <br />
+          </>
+        ))}
+        
       </Container>
 
       <Container center>
