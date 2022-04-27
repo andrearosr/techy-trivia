@@ -20,7 +20,7 @@ const Button = styled.button`
   font-weight: 500;
   transition: 0.5s;
   
-  background: ${props => props.background || '#00D0AD'};
+  background: ${props => props.background || props.theme.green};
   color: ${props => props.fontColor || 'black'};
 `;
 

@@ -16,7 +16,7 @@ const Text = styled.p`
   font-weight: 400;
   font-size: 16px;
   margin: 10px 0;
-  color: #00D0AD;
+  color: ${props => props.color || props.theme.green};
 `;
 
 export { Title, Subtitle, Text };
