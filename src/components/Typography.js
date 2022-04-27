@@ -21,4 +21,16 @@ const Text = styled.p`
   color: ${props => props.color || props.theme.colors.lightGreen};
 `;
 
-export { Title, Subtitle, Text };
+const GradientText = styled.p`
+  font-weight: 900;
+  font-size: ${props => props.fontSize || '88px'};
+  color: ${props => props.color || props.theme.colors.purple};
+  margin: 10px 0;
+  background: ${props => props.theme.colors[props.gradient] || props.theme.colors.purpleGradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+`;
+
+export { Title, Subtitle, Text, GradientText };

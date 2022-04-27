@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Screen, Container, Title, Subtitle, Text, Button } from '../components';
+import Logo from '../assets/iso.png';
+import { Screen, Container, Title, Subtitle, Text, GradientText, Button } from '../components';
 
 function Start() {
   const navigate = useNavigate();
@@ -17,9 +18,20 @@ function Start() {
 
   return (
     <Screen>
-      <Container>
+      <Container flex>
         <Title>Ya casi estamos</Title>
-        <Subtitle>Espera un momento mientras todas las personas se alistan para jugar...</Subtitle>
+        <Subtitle>
+          {timer >= 0 && "El juego consiste en responder todas las preguntas, la participante que conteste mayor cantidad de preguntas correctas será la ganadora"}
+          {timer < 0 && "Espera un momento mientras todas las personas se alistan para jugar..."}
+        </Subtitle>
+      </Container>
+
+      <Container center flex>
+        {timer < 0 && <img src={Logo} />}
+
+        {timer > 0 && <GradientText>{timer}</GradientText>}
+
+        {timer === 0 && <GradientText fontSize="40px">¡Empezamos!</GradientText>}
       </Container>
 
       {timer < 0 && (
@@ -27,11 +39,6 @@ function Start() {
           Comenzar
         </Button>
       )}
-      
-      {timer > 0 && <Text>{timer}</Text>}
-
-      {timer === 0 && <Text>¡Empezamos!</Text>}
-      
     </Screen>
   )
 }
