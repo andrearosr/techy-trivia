@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
 import { Screen, Container, Subtitle, Text, Button } from '../components';
+import Thick from '../assets/thick.png';
 
 const AnswerContainer = styled.div`
   height: 60px;
@@ -68,7 +69,7 @@ function Game() {
 
   if (!currentQuestion) return;
   return (
-    <Screen>
+    <Screen footerSrc={Thick}>
       <Container>
         <Subtitle>
           {currentQuestion.title}

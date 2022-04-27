@@ -1,4 +1,4 @@
-export default [
+const questions = [
   {
     title: "Hedy Lamarr fue una inventora que creó un sistema que luego inspiraría el wifi. ¿Qué otra profesión tenía?",
     options: [
@@ -18,3 +18,5 @@ export default [
     answer: 2
   }
 ]
+
+export default questions;
