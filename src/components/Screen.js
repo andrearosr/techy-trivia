@@ -1,11 +1,16 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Thin from '../assets/thin.png';
 
 const ScreenContainer = styled.div`
-  padding: 20% 20px 50px;
+  padding: 100px 20px 50px;
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  @media (min-height: 750px) {
+    padding-top: 150px;
+  }
 `;
 
 const ScreenContent = styled.div`
@@ -26,21 +31,23 @@ const Container = styled.div`
   max-width: 400px;
 `;
 
-const BackgroundHeader = styled.img`
+const ImageStyles = css`
   position: absolute;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 0;
   width: 100%;
+  max-width: 400px;
+`;
+
+const BackgroundHeader = styled.img`
+  ${ImageStyles};
+  top: 0;
 `;
 
 const BackgroundFooter = styled.img`
-  position: absolute;
+  ${ImageStyles};
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
 `;
 
 function Screen({ headerSrc = Thin, footerSrc, children }) {
