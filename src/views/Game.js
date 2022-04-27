@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
 import { Screen, Container, Subtitle, Text, GradientText, Button } from '../components';
@@ -19,6 +20,7 @@ const GradientTimer = styled(GradientText)`
 `;
 
 function Game() {
+  const theme = useTheme();
   const [questions, setQuestions] = useState(questionsFx);
   const [currentQuestion, setCurrentQuestion] = useState();
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -60,18 +62,24 @@ function Game() {
   }
 
   function getButtonBackground(option) {
-    if (selectedAnswer === null || option !== selectedAnswer) return '#333';
-    else if (selectedAnswer === currentQuestion.answer) return 'green';
-    else return 'red';
+    if (selectedAnswer === null || option !== selectedAnswer) return theme.colors.gray;
+    else if (selectedAnswer === currentQuestion.answer) return theme.colors.greenGradient;
+    else return theme.colors.redGradient;
   }
 
   function renderAnswer() {
     if (selectedAnswer === null) {
-      return (<Text>Selecciona una opción:</Text>)
+      return (
+        <Text>Selecciona una opción:</Text>
+      );
     } else if (selectedAnswer === currentQuestion.answer) {
-      return (<Text>¡Correcto!</Text>)
+      return (
+        <GradientText fontSize="30px" gradient="greenGradient">¡Correcto!</GradientText>
+      );
     } else {
-      return (<Text>¡Incorrecto!</Text>)
+      return (
+        <GradientText fontSize="30px" gradient="redGradient">¡Incorrecto!</GradientText>
+      );
     }
   }
 

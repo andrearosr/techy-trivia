@@ -22,7 +22,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 80px;
-  border: 1px solid transparent;
+  border: none;
   font-weight: 700;
   transition: 0.5s;
   opacity: ${props => props.disabled ? 0.3 : 1};
