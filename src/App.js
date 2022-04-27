@@ -6,6 +6,7 @@ import { GlobalStyles, Theme } from './GlobalStyles';
 import Welcome from './views/Welcome';
 import Start from './views/Start';
 import Game from './views/Game';
+import NextQuestion from './views/NextQuestion';
 
 const Root = styled.div`
   background-color: black;
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Welcome />} />
             <Route path="/start" element={<Start />} />
             <Route path="/game" element={<Game />} />
+            <Route path="/next-question" element={<NextQuestion />} />
           </Routes>
         </Root>
       </ThemeProvider>

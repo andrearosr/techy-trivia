@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
@@ -20,6 +21,7 @@ const GradientTimer = styled(GradientText)`
 `;
 
 function Game() {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [questions, setQuestions] = useState(questionsFx);
   const [currentQuestion, setCurrentQuestion] = useState();
@@ -38,9 +40,10 @@ function Game() {
       }
 
       if (timer === 0) {
-        selectNextQuestion();
-        setSelectedAnswer(null);
-        setTimer(15);
+        // selectNextQuestion();
+        // setSelectedAnswer(null);
+        // setTimer(15);
+        navigate('/next-question', { replace: true });
       }
     }, 1000);
   }, [timer]);
