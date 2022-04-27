@@ -1,8 +1,12 @@
+import { css } from '@emotion/react';
+
 const GlobalStyles = css`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
   * {
     box-sizing: border-box;
-    font-family: Montserrat, sans-serif;
-    font-weight: 200;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
   }
 
   body {
@@ -29,6 +33,7 @@ const Theme = {
     purple: '#582FDD',
     gray: '#3C3C3C',
     lightGray: '#969696',
+    offWhite: '#DBDBDB',
 
     greenGradient: 'linear-gradient(180deg, #1CE7C0 0%, #32BACE 100%)',
     redGradient: 'linear-gradient(180deg, #F7C7C4 0%, #EE7878 100%)',
