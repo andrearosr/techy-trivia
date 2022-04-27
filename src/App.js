@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import { GlobalStyles, Theme } from './GlobalStyles';
+import { Screen } from './components';
 import Welcome from './views/Welcome';
 import Start from './views/Start';
 import Game from './views/Game';
@@ -22,12 +23,14 @@ function App() {
       <ThemeProvider theme={Theme}>
         <Global styles={GlobalStyles} />
         <Root>
-          <Routes>
-            <Route path="/" element={<Welcome />} />
-            <Route path="/start" element={<Start />} />
-            <Route path="/game" element={<Game />} />
-            <Route path="/next-question" element={<NextQuestion />} />
-          </Routes>
+          <Screen>
+            <Routes>
+              <Route path="/" element={<Welcome />} />
+              <Route path="/start" element={<Start />} />
+              <Route path="/game" element={<Game />} />
+              <Route path="/next-question" element={<NextQuestion />} />
+            </Routes>
+          </Screen>
         </Root>
       </ThemeProvider>
     </RecoilRoot>

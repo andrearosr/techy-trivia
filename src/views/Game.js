@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
-import { Screen, Container, Subtitle, Text, GradientText, Button } from '../components';
-import Thick from '../assets/thick.png';
+import { Container, Subtitle, Text, GradientText, Button } from '../components';
 
 const AnswerContainer = styled.div`
   height: 60px;
@@ -88,7 +87,7 @@ function Game() {
 
   if (!currentQuestion) return;
   return (
-    <Screen footerSrc={Thick}>
+    <>
       <Container>
         <Subtitle>
           {currentQuestion.title}
@@ -134,7 +133,7 @@ function Game() {
         )}
         
       </TimerContainer>
-    </Screen>
+    </>
   )
 }
 

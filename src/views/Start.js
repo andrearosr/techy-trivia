@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Logo from '../assets/iso.png';
-import Thick from '../assets/thick.png';
-import { Screen, Container, Title, Subtitle, GradientText, Button } from '../components';
+import { Container, Title, Subtitle, GradientText, Button } from '../components';
 
 function Start() {
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ function Start() {
   }, [timer, navigate]);
 
   return (
-    <Screen footerSrc={Thick}>
+    <>
       <Container flex>
         <Title>Ya casi estamos</Title>
         <Subtitle>
@@ -40,7 +39,7 @@ function Start() {
           Comenzar
         </Button>
       )}
-    </Screen>
+    </>
   )
 }
 

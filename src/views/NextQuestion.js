@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Screen, Container, Text, GradientText } from '../components';
-import Thick from '../assets/thick.png';
+import { Container, Text, GradientText } from '../components';
 
 function NextQuestion({}) {
   const navigate = useNavigate();
@@ -20,14 +19,14 @@ function NextQuestion({}) {
   }, [timer]);
 
   return (
-    <Screen footerSrc={Thick}>
+    <>
       <Container center flex>
         <Text fontSize="24px" color="white">Siguiente pregunta en:</Text>
         <GradientText>
           {timer}
         </GradientText>
       </Container>
-    </Screen>
+    </>
   )
 }
 

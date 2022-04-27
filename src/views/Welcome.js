@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import * as Icon from '@emotion-icons/ionicons-sharp';
-import { Screen, Container, Title, Subtitle, Text, Input, Button } from '../components';
+import { Container, Title, Subtitle, Text, Input, Button } from '../components';
 
 const ErrorMessage = styled(Text)`
   align-self: flex-start;
@@ -30,7 +30,7 @@ function Welcome() {
   }
 
   return (
-    <Screen>
+    <>
       <Container center>
         <Title>¡Bienvenida!</Title>
         <Subtitle>¿Estás lista para jugar?</Subtitle>
@@ -59,7 +59,7 @@ function Welcome() {
           <Icon.ArrowForward size={18} />
         </Button>
       </Container>
-    </Screen>
+    </>
   )
 }
 
