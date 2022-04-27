@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
-import { Screen, Container, Subtitle, Text, Button } from '../components';
+import { Screen, Container, Subtitle, Text, GradientText, Button } from '../components';
 import Thick from '../assets/thick.png';
 
 const AnswerContainer = styled.div`
   height: 60px;
   display: flex;
   align-items: flex-end;
+`;
+
+const TimerContainer = styled(Container)`
+  height: 125px;
+`;
+
+const GradientTimer = styled(GradientText)`
+  margin: 0;
 `;
 
 function Game() {
@@ -76,7 +84,7 @@ function Game() {
         </Subtitle>
       </Container>
 
-      <Container center>
+      <Container center flex>
         <AnswerContainer>
           {renderAnswer()}
         </AnswerContainer>
@@ -96,10 +104,25 @@ function Game() {
         
       </Container>
 
-      <Container center>
-        <Text>{timer}</Text>
-        <Text>segundos</Text>
-      </Container>
+      <TimerContainer center>
+        {timer > 0 && (
+          <>
+            <GradientTimer>
+              {timer}
+            </GradientTimer>
+            <GradientTimer fontSize="16px">
+              {timer === 1 ? 'segundo' : 'segundos'}
+            </GradientTimer>
+          </>
+        )}
+
+        {timer === 0 && (
+          <GradientTimer fontSize="40px">
+            ¡Tiempo!
+          </GradientTimer>
+        )}
+        
+      </TimerContainer>
     </Screen>
   )
 }

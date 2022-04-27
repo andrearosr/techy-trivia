@@ -26,6 +26,7 @@ const GradientText = styled.p`
   font-size: ${props => props.fontSize || '88px'};
   color: ${props => props.color || props.theme.colors.purple};
   margin: 10px 0;
+  text-align: center;
   background: ${props => props.theme.colors[props.gradient] || props.theme.colors.purpleGradient};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Thin from '../assets/thin.png';
 
 const ScreenContainer = styled.div`
-  padding: 20% 20px 80px;
+  padding: 20% 20px 50px;
   display: flex;
   flex-direction: column;
   flex: 1;
