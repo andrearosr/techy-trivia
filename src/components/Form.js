@@ -7,6 +7,12 @@ const Input = styled.input`
   border-radius: 6px;
   border: 1px solid black;
   font-weight: 400;
+
+  :focus, :focus-visible {
+    outline: none;
+    border: 1px solid ${props => props.theme.colors.green};
+    box-shadow: 0px 0px 8px rgba(28, 232, 193, 0.6);
+  }
 `;
 
 const Button = styled.button`
@@ -19,6 +25,7 @@ const Button = styled.button`
   border: 1px solid transparent;
   font-weight: 700;
   transition: 0.5s;
+  opacity: ${props => props.disabled ? 0.3 : 1};
   
   background: ${props => props.background || props.theme.colors.green};
   color: ${props => props.fontColor || 'black'};

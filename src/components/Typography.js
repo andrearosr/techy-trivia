@@ -16,8 +16,8 @@ const Subtitle = styled.h2`
 
 const Text = styled.p`
   font-weight: 400;
-  font-size: 16px;
   margin: 10px 0;
+  font-size: ${props => props.fontSize || '16px'};
   color: ${props => props.color || props.theme.colors.lightGreen};
 `;
 
