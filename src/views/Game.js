@@ -105,7 +105,6 @@ function Game() {
         {question.options.map((option, index) => (
           <Fragment key={window.btoa(option)}>
             <Button
-              
               onClick={pickAnswer(index)}
               fontColor={getButtonFontColor(index)}
               background={getButtonBackground(index)}

@@ -9,9 +9,13 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
   margin: 10px 0;
   color: ${props => props.color || props.theme.colors.offWhite};
+
+  @media (min-height: 660px) {
+    font-size: 20px;
+  }
 `;
 
 const Text = styled.p`
