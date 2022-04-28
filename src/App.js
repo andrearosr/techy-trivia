@@ -34,6 +34,10 @@ function App() {
         id,
       });
     });
+
+    socket.on('game_ended', (leaderboard) => {
+      console.log('results', leaderboard);
+    });
   }, []);
 
   return (
