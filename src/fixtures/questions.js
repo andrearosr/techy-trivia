@@ -16,6 +16,78 @@ const questions = [
       "Uruguay",
     ],
     answer: 2
+  },
+  {
+    title: "¿Qué porcentaje representan las mujeres dentro del sector de la tecnología a nivel mundial?",
+    options: [
+      "24%",
+      "13%",
+      "50%",
+    ],
+    answer: 0,
+  },
+  {
+    title: "¿Qué profesiones crees que pueden trabajar dentro del sector de la tecnología?",
+    options: [
+      "Ingenieras, diseñadoras, desarrolladoras",
+      "Contadoras, psicólogas, abogadas.",
+      "Todas",
+    ],
+    answer: 2
+  },
+  {
+    title: "¿Quién fue la primera persona en crear un algoritmo para ser procesado por una máquina?",
+    options: [
+      "Audrey Tang",
+      "Ada Lovelace",
+      "Alan Turing",
+    ],
+    answer: 1,
+  },
+  {
+    title: "¿Quién introdujo las bases para desarrollar una interfaz gráfica de usuario?",
+    options: [
+      "Steve Jobs",
+      "Adele Goldberg",
+      "Grace Murray Hopper",
+    ],
+    answer: 1,
+  },
+  {
+    title: "¿Que mujer es considerada como la madre de internet además de ser la creadora del protocolo STP (utilizado en las primeras redes de computadoras)?",
+    options: [
+      "Radia Perlman",
+      "Susan Kare",
+      "Audrey Tang",
+    ],
+    answer: 0,
+  },
+  { 
+    title: "¿Quién creó el primer lenguaje de programación para niños?",
+    options: [
+      "Edith Clarke",
+      "Cynthia Solomon",
+      "Larry Page",
+    ],
+    answer: 1,
+  },
+  {
+    title: "¿A quien le debemos poder llegar a cualquier parte del mundo sin cable gracias al GPS, Bluetooth y Wi-Fi?",
+    options: [
+      "Erna Schneider Hoover",
+      "Ada Lovelace",
+      "Hedwig Eva Maria Kiesler",
+    ],
+    answer: 2
+  },
+  { 
+    title: "¿Quién lideró el desarrollo del algoritmo utilizado para captar las primeras imágenes de un agujero negro?",
+    options: [
+      "Katie Bouman",
+      "Stephen Hawkins",
+      "Margaret Hamilton",
+    ],
+    answer: 0,
   }
 ]
 
