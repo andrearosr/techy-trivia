@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
-const roundsState = atom({
-  key: 'rounds',
-  default: '0',
+const roundState = atom({
+  key: 'round',
+  default: 0,
 });
 
-export { roundsState };
+export { roundState };

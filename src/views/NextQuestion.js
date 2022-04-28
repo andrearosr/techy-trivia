@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Text, GradientText } from '../components';
 
-function NextQuestion({}) {
+function NextQuestion() {
   const navigate = useNavigate();
   const [timer, setTimer] = useState(3);
 
@@ -16,7 +16,7 @@ function NextQuestion({}) {
         navigate('/game', { replace: true });
       }
     }, 1000);
-  }, [timer]);
+  }, [timer, navigate]);
 
   return (
     <>

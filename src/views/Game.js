@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
 import { Container, Subtitle, Text, GradientText, Button } from '../components';
+import { roundState } from '../state/game';
 
 const AnswerContainer = styled.div`
   height: 60px;
@@ -22,15 +24,11 @@ const GradientTimer = styled(GradientText)`
 function Game() {
   const navigate = useNavigate();
   const theme = useTheme();
-  const [questions, setQuestions] = useState(questionsFx);
-  const [currentQuestion, setCurrentQuestion] = useState();
+  const [round, setRound] = useRecoilState(roundState);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [timer, setTimer] = useState(15);
 
-  function selectNextQuestion() {
-    const index = Math.floor(Math.random() * questions.length);
-    setCurrentQuestion(questions[index]);
-  }
+  const question = questionsFx[round];
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,17 +37,11 @@ function Game() {
       }
 
       if (timer === 0) {
-        // selectNextQuestion();
-        // setSelectedAnswer(null);
-        // setTimer(15);
+        setRound(round + 1);
         navigate('/next-question', { replace: true });
       }
     }, 1000);
-  }, [timer]);
-
-  useEffect(() => {
-    selectNextQuestion();
-  }, []);
+  }, [timer, round, setRound, navigate]);
 
   function pickAnswer(option) {
     return () => {
@@ -65,7 +57,7 @@ function Game() {
 
   function getButtonBackground(option) {
     if (selectedAnswer === null || option !== selectedAnswer) return theme.colors.gray;
-    else if (selectedAnswer === currentQuestion.answer) return theme.colors.greenGradient;
+    else if (selectedAnswer === question.answer) return theme.colors.greenGradient;
     else return theme.colors.redGradient;
   }
 
@@ -74,7 +66,7 @@ function Game() {
       return (
         <Text>Selecciona una opción:</Text>
       );
-    } else if (selectedAnswer === currentQuestion.answer) {
+    } else if (selectedAnswer === question.answer) {
       return (
         <GradientText fontSize="30px" gradient="greenGradient">¡Correcto!</GradientText>
       );
@@ -85,12 +77,12 @@ function Game() {
     }
   }
 
-  if (!currentQuestion) return;
+  if (!question) return;
   return (
     <>
       <Container>
         <Subtitle>
-          {currentQuestion.title}
+          {question.title}
         </Subtitle>
       </Container>
 
@@ -98,7 +90,7 @@ function Game() {
         <AnswerContainer>
           {renderAnswer()}
         </AnswerContainer>
-        {currentQuestion.options.map((option, index) => (
+        {question.options.map((option, index) => (
           <>
             <Button
               key={window.btoa(option)}
