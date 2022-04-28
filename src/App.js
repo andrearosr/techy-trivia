@@ -10,6 +10,8 @@ import Welcome from './views/Welcome';
 import Start from './views/Start';
 import Game from './views/Game';
 import NextQuestion from './views/NextQuestion';
+import { useRecoilState } from 'recoil';
+import { playerState } from './state/game';
 
 const Root = styled.div`
   background-color: black;
@@ -21,9 +23,17 @@ const Root = styled.div`
 
 function App() {
   const [client, setClient] = useState();
+  const [player, setPlayer] = useRecoilState(playerState);
   useEffect(() => {
     const socket = socketIOClient(process.env.REACT_APP_SERVER_URL);
     setClient(socket);
+
+    socket.on('player_added', (id) => {
+      setPlayer({
+        ...player,
+        id,
+      });
+    });
   }, []);
 
   return (

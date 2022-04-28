@@ -5,9 +5,17 @@ const roundState = atom({
   default: 0,
 });
 
+const playerState = atom({
+  key: 'player',
+  default: {
+    name: '',
+    id: '',
+  },
+})
+
 const isAdminState = atom({
   key: 'admin',
   default: false,
 })
 
-export { roundState, isAdminState };
+export { roundState, isAdminState, playerState };

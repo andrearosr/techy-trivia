@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import * as Icon from '@emotion-icons/ionicons-sharp';
 import { Container, Title, Subtitle, Text, Input, Button } from '../components';
-import { isAdminState } from '../state/game';
+import { isAdminState, playerState } from '../state/game';
+import WebsocketContext from '../websocket_context';
 
 const ErrorMessage = styled(Text)`
   align-self: flex-start;
@@ -14,9 +15,13 @@ const ErrorMessage = styled(Text)`
 
 function Welcome() {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const socket = useContext(WebsocketContext);
   const [search] = useSearchParams(); 
   const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
+  const [player, setPlayer] = useRecoilState(playerState);
   const [isValid, setIsValid] = useState(false);
+  const [name, setName] = useState('');
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -24,6 +29,8 @@ function Welcome() {
   }, [search]);
 
   function handleChange(e) {
+    setName(e.target.value);
+
     if (e.target.value) {
       setIsValid(true);
       setError();
@@ -34,7 +41,17 @@ function Welcome() {
   }
 
   function handleButtonClick() {
-    if (!isValid) setError('Debes completar esta información para poder continuar.');
+    if (!isValid) {
+      setError('Debes completar esta información para poder continuar.');
+      return;
+    }
+
+    setPlayer({
+      ...player,
+      name,
+    });
+    socket.emit('player_joined', name);
+    navigate('/start');
   }
 
   return (
@@ -47,6 +64,7 @@ function Welcome() {
       <Container center flex>
         <Text>Cuéntanos cómo te llamas...</Text>
         <Input
+          value={name}
           onChange={handleChange}
           placeholder='Ingresa tu nombre aquí...'
         />
@@ -57,9 +75,6 @@ function Welcome() {
 
       <Container>
         <Button
-          as={Link}
-          to={isValid ? "/start" : '#'}
-          replace
           disabled={!isValid}
           onClick={handleButtonClick}
         >
