@@ -36,19 +36,21 @@ function Game() {
   const [timer, setTimer] = useState(15);
 
   const question = questionsFx[round];
-
+  
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       if (timer > 0) {
         setTimer(timer - 1);
       }
 
       if (timer === 0) {
-        setRound(round + 1);
         setTimer(-1);
+        setRound(round + 1);
         navigate('/next-question', { replace: true });
       }
     }, 1000);
+
+    return () => clearTimeout(timeout);
   }, [timer, round, setRound, navigate]);
 
   function pickAnswer(option) {
