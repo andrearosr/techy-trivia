@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Input = styled.input`
-  height: 45px;
+  height: 50px;
   width: 100%;
   padding: 5px 10px;
   border-radius: 6px;
@@ -17,7 +17,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 100%;
-  height: 45px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

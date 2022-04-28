@@ -5,7 +5,7 @@ import Thin from '../assets/thin.png';
 import Thick from '../assets/thick.png';
 
 const ScreenContainer = styled.div`
-  padding: 100px 20px 50px;
+  padding: 100px 30px 100px;
   display: flex;
   flex-direction: column;
   flex: 1;
