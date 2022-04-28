@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { RecoilRoot } from 'recoil';
 import { Routes, Route } from "react-router-dom";
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -33,23 +32,21 @@ function App() {
   }, []);
 
   return (
-    <RecoilRoot>
-      <ThemeProvider theme={Theme}>
-        <Global styles={GlobalStyles} />
-        <Root>
-          <WebsocketClientContext.Provider value={client}>
-            <Screen>
-              <Routes>
-                <Route path="/" element={<Welcome />} />
-                <Route path="/start" element={<Start />} />
-                <Route path="/game" element={<Game />} />
-                <Route path="/next-question" element={<NextQuestion />} />
-              </Routes>
-            </Screen>
-          </WebsocketClientContext.Provider>
-        </Root>
-      </ThemeProvider>
-    </RecoilRoot>
+    <ThemeProvider theme={Theme}>
+      <Global styles={GlobalStyles} />
+      <Root>
+        <WebsocketClientContext.Provider value={client}>
+          <Screen>
+            <Routes>
+              <Route path="/" element={<Welcome />} />
+              <Route path="/start" element={<Start />} />
+              <Route path="/game" element={<Game />} />
+              <Route path="/next-question" element={<NextQuestion />} />
+            </Routes>
+          </Screen>
+        </WebsocketClientContext.Provider>
+      </Root>
+    </ThemeProvider>
   );
 }
 

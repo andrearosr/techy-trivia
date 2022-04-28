@@ -5,4 +5,9 @@ const roundState = atom({
   default: 0,
 });
 
-export { roundState };
+const isAdminState = atom({
+  key: 'admin',
+  default: false,
+})
+
+export { roundState, isAdminState };
