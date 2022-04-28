@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { useTheme } from '@emotion/react';
@@ -91,9 +91,9 @@ function Game() {
           {renderAnswer()}
         </AnswerContainer>
         {question.options.map((option, index) => (
-          <>
+          <Fragment key={window.btoa(option)}>
             <Button
-              key={window.btoa(option)}
+              
               onClick={pickAnswer(index)}
               fontColor={getButtonFontColor(index)}
               background={getButtonBackground(index)}
@@ -101,7 +101,7 @@ function Game() {
               {option}
             </Button>
             <br />
-          </>
+          </Fragment>
         ))}
         
       </Container>

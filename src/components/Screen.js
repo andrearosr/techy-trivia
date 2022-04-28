@@ -1,6 +1,8 @@
+import { useLocation } from 'react-router-dom';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Thin from '../assets/thin.png';
+import Thick from '../assets/thick.png';
 
 const ScreenContainer = styled.div`
   padding: 100px 20px 50px;
@@ -50,11 +52,19 @@ const BackgroundFooter = styled.img`
   bottom: 0;
 `;
 
-function Screen({ headerSrc = Thin, footerSrc, children }) {
+function Screen({ children }) {
+  const location = useLocation();
+  const gamePattern = /(game|start|next-question)/g;
+  let footerSrc = '';
+
+  if (gamePattern.test(location.pathname)) {
+    footerSrc = Thick;
+  }
+
   return (
     <ScreenContainer>
-      {headerSrc && <BackgroundHeader src={headerSrc} alt="" />}
-      {footerSrc && <BackgroundFooter src={footerSrc} alt="" />}
+      <BackgroundHeader src={Thin} alt="" />
+      <BackgroundFooter src={footerSrc} alt="" />
       <ScreenContent>
         {children}
       </ScreenContent>
