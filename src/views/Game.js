@@ -13,6 +13,13 @@ const AnswerContainer = styled.div`
   align-items: flex-end;
 `;
 
+const AnswerText = styled(Text)`
+  height: 16px;
+  font-size: 14px;
+  color: white;
+  margin: 0;
+`;
+
 const TimerContainer = styled(Container)`
   height: 125px;
 `;
@@ -38,6 +45,7 @@ function Game() {
 
       if (timer === 0) {
         setRound(round + 1);
+        setTimer(-1);
         navigate('/next-question', { replace: true });
       }
     }, 1000);
@@ -66,15 +74,17 @@ function Game() {
       return (
         <Text>Selecciona una opción:</Text>
       );
-    } else if (selectedAnswer === question.answer) {
+    }
+    
+    if (selectedAnswer === question.answer) {
       return (
         <GradientText fontSize="30px" gradient="greenGradient">¡Correcto!</GradientText>
       );
-    } else {
-      return (
-        <GradientText fontSize="30px" gradient="redGradient">¡Incorrecto!</GradientText>
-      );
     }
+
+    return (
+      <GradientText fontSize="30px" gradient="redGradient">¡Incorrecto!</GradientText>
+    );
   }
 
   if (!question) return;
@@ -103,7 +113,11 @@ function Game() {
             <br />
           </Fragment>
         ))}
-        
+          <AnswerText>
+            {selectedAnswer !== null && selectedAnswer !== question.answer &&
+              `Respuesta correcta: ${question.options[question.answer]}`
+            }
+          </AnswerText>
       </Container>
 
       <TimerContainer center>
