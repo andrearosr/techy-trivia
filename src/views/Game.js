@@ -48,7 +48,6 @@ function Game() {
 
       if (timer === 0) {
         setTimer(-1);
-        setRound(round + 1);
         navigate('/next-question', { replace: true });
       }
     }, 1000);
@@ -96,7 +95,7 @@ function Game() {
     );
   }
 
-  if (!question) return;
+  if (!question || timer < 0) return;
   return (
     <>
       <Container>
