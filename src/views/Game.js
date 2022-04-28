@@ -109,7 +109,7 @@ function Game() {
           {renderAnswer()}
         </AnswerContainer>
         {question.options.map((option, index) => (
-          <Fragment key={window.btoa(option)}>
+          <Fragment key={option}>
             <Button
               onClick={pickAnswer(index)}
               fontColor={getButtonFontColor(index)}

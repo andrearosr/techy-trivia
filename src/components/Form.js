@@ -17,6 +17,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 100%;
+  max-width: 400px;
   height: 50px;
   display: flex;
   align-items: center;

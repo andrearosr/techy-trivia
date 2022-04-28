@@ -5,7 +5,7 @@ import { Container, Text, GradientText, Subtitle, Title } from '../components';
 import { roundState } from '../state/game';
 import WebsocketClientContext from '../websocket_context';
 
-const ROUNDS_INDEX = 4;
+const ROUNDS_INDEX = 9;
 
 function NextQuestion() {
   const navigate = useNavigate();

@@ -54,7 +54,7 @@ const BackgroundHeader = styled.img`
 const BackgroundFooter = styled.img`
   ${ImageStyles};
   bottom: 0;
-  transform: translateX(-50%) ${props => props.rotate ? 'rotate(180deg)' : 'none'};
+  transform: translateX(-50%) ${props => props.rotate ? 'rotate(180deg)' : ''};
 `;
 
 function Screen({ children }) {
