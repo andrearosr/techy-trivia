@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import socketIOClient from "socket.io-client";
@@ -11,7 +11,7 @@ import Start from './views/Start';
 import Game from './views/Game';
 import NextQuestion from './views/NextQuestion';
 import { useRecoilState } from 'recoil';
-import { leaderboardState, playerState } from './state/game';
+import { leaderboardState, playerState, roundState } from './state/game';
 import Leaderboard from './views/Leaderboard';
 
 const Root = styled.div`
@@ -23,9 +23,11 @@ const Root = styled.div`
 `;
 
 function App() {
+  const navigate = useNavigate();
   const [client, setClient] = useState();
   const [player, setPlayer] = useRecoilState(playerState);
   const [leaderboard, setLeaderboard] = useRecoilState(leaderboardState);
+  const [round, setRound] = useRecoilState(roundState);
 
   useEffect(() => {
     const socket = socketIOClient(process.env.REACT_APP_SERVER_URL);
@@ -40,6 +42,11 @@ function App() {
 
     socket.on('game_ended', (leaderboard) => {
       setLeaderboard(leaderboard);
+    });
+
+    socket.on('start_over', () => {
+      setRound(0);
+      navigate('/start');
     });
   }, []);
 

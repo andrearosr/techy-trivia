@@ -54,7 +54,7 @@ const BackgroundHeader = styled.img`
 const BackgroundFooter = styled.img`
   ${ImageStyles};
   bottom: 0;
-  transform: translateX(-50%) ${props => props.rotate ? 'rotate(180deg)' : ''};
+  transform: translateX(-50%) ${props => props.rotateImage ? 'rotate(180deg)' : ''};
 `;
 
 function Screen({ children }) {
@@ -76,7 +76,7 @@ function Screen({ children }) {
   return (
     <ScreenContainer>
       <BackgroundHeader src={Thin} alt="" />
-      <BackgroundFooter src={footerSrc} rotate={rotate} alt="" />
+      <BackgroundFooter src={footerSrc} rotateImage={rotate} alt="" />
       <ScreenContent>
         {children}
       </ScreenContent>
