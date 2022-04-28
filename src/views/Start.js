@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from 'recoil';
 import styled from '@emotion/styled';
@@ -6,6 +6,7 @@ import Logo from '../assets/iso.png';
 import { Container, Title, Subtitle, GradientText, Button } from '../components';
 import { spin } from '../GlobalStyles';
 import { isAdminState } from '../state/game';
+import WebsocketContext from '../websocket_context';
 
 const LogoSpin = styled.img`
   animation: ${spin} 3s ease-in-out infinite;
@@ -13,10 +14,13 @@ const LogoSpin = styled.img`
 
 function Start() {
   const navigate = useNavigate();
+  const socket = useContext(WebsocketContext);
   const [timer, setTimer] = useState(-1);
   const [isAdmin] = useRecoilState(isAdminState);
 
-  const start = () => setTimer(3);
+  const start = () => {
+    socket.emit("ready");
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,6 +28,12 @@ function Start() {
       if (timer === 0) navigate("/game", { replace: true })
     }, 1000);
   }, [timer, navigate]);
+
+  useEffect(() => {
+    socket.on('start', () => {
+      if (timer < 0) setTimer(3);
+    })
+  }, []);
 
   return (
     <>

@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
-import { w3cwebsocket as W3CWebSocket } from "websocket";
+import socketIOClient from "socket.io-client";
 import WebsocketClientContext from "./websocket_context/index";
 import { GlobalStyles, Theme } from './GlobalStyles';
 import { Screen } from './components';
@@ -10,8 +10,6 @@ import Welcome from './views/Welcome';
 import Start from './views/Start';
 import Game from './views/Game';
 import NextQuestion from './views/NextQuestion';
-
-const client = new W3CWebSocket(`ws://${process.env.REACT_APP_SERVER_URL}`);
 
 const Root = styled.div`
   background-color: black;
@@ -22,13 +20,10 @@ const Root = styled.div`
 `;
 
 function App() {
+  const [client, setClient] = useState();
   useEffect(() => {
-    client.onopen = () => {
-      console.log('WebSocket Client Connected');
-    };
-    client.onmessage = (message) => {
-      console.log(message);
-    };
+    const socket = socketIOClient(process.env.REACT_APP_SERVER_URL);
+    setClient(socket);
   }, []);
 
   return (
