@@ -5,12 +5,16 @@ import Thin from '../assets/thin.png';
 import Thick from '../assets/thick.png';
 
 const ScreenContainer = styled.div`
-  padding: 100px 30px 100px;
+  padding: 60px 30px 100px;
   display: flex;
   flex-direction: column;
   flex: 1;
 
   @media (min-height: 750px) {
+    padding-top: 100px;
+  }
+
+  @media (min-height: 1024px) {
     padding-top: 150px;
   }
 `;
