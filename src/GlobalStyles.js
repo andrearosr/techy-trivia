@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 
 const GlobalStyles = css`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
@@ -41,4 +41,14 @@ const Theme = {
   }
 };
 
-export { GlobalStyles, Theme };
+const spin = keyframes`
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export { GlobalStyles, Theme, spin };

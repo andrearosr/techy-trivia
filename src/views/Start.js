@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import styled from '@emotion/styled';
 import Logo from '../assets/iso.png';
 import { Container, Title, Subtitle, GradientText, Button } from '../components';
+import { spin } from '../GlobalStyles';
+
+const LogoSpin = styled.img`
+  animation: ${spin} 3s ease-in-out infinite;
+`;
 
 function Start() {
   const navigate = useNavigate();
@@ -27,7 +33,7 @@ function Start() {
       </Container>
 
       <Container center flex>
-        {timer < 0 && <img src={Logo} alt="Loading spinner" />}
+        {timer < 0 && <LogoSpin src={Logo} alt="Loading spinner" />}
 
         {timer > 0 && <GradientText>{timer}</GradientText>}
 
