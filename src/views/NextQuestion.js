@@ -25,7 +25,7 @@ function NextQuestion() {
           navigate('/game', { replace: true });
         } else {
           socket.emit('end');
-          //navigate('/end', { replace: true });
+          navigate('/leaderboard', { replace: true });
         }
       }
     }, 1000);

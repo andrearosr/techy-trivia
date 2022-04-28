@@ -11,11 +11,16 @@ const playerState = atom({
     name: '',
     id: '',
   },
-})
+});
 
 const isAdminState = atom({
   key: 'admin',
   default: false,
-})
+});
 
-export { roundState, isAdminState, playerState };
+const leaderboardState = atom({
+  key: 'leaderboard',
+  default: [],
+});
+
+export { roundState, isAdminState, playerState, leaderboardState };

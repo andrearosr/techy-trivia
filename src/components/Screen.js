@@ -40,7 +40,6 @@ const Container = styled.div`
 const ImageStyles = css`
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
   z-index: 0;
   width: 100%;
   max-width: 400px;
@@ -49,26 +48,35 @@ const ImageStyles = css`
 const BackgroundHeader = styled.img`
   ${ImageStyles};
   top: 0;
+  transform: translateX(-50%);
 `;
 
 const BackgroundFooter = styled.img`
   ${ImageStyles};
   bottom: 0;
+  transform: translateX(-50%) ${props => props.rotate ? 'rotate(180deg)' : 'none'};
 `;
 
 function Screen({ children }) {
   const location = useLocation();
   const gamePattern = /(game|start|next-question)/g;
+  const leaderboardPattern = /(leaderboard)/g;
   let footerSrc = '';
+  let rotate = false;
 
   if (gamePattern.test(location.pathname)) {
     footerSrc = Thick;
   }
 
+  if (leaderboardPattern.test(location.pathname)) {
+    footerSrc = Thin;
+    rotate = true;
+  }
+
   return (
     <ScreenContainer>
       <BackgroundHeader src={Thin} alt="" />
-      <BackgroundFooter src={footerSrc} alt="" />
+      <BackgroundFooter src={footerSrc} rotate={rotate} alt="" />
       <ScreenContent>
         {children}
       </ScreenContent>

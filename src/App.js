@@ -11,7 +11,8 @@ import Start from './views/Start';
 import Game from './views/Game';
 import NextQuestion from './views/NextQuestion';
 import { useRecoilState } from 'recoil';
-import { playerState } from './state/game';
+import { leaderboardState, playerState } from './state/game';
+import Leaderboard from './views/Leaderboard';
 
 const Root = styled.div`
   background-color: black;
@@ -24,6 +25,8 @@ const Root = styled.div`
 function App() {
   const [client, setClient] = useState();
   const [player, setPlayer] = useRecoilState(playerState);
+  const [leaderboard, setLeaderboard] = useRecoilState(leaderboardState);
+
   useEffect(() => {
     const socket = socketIOClient(process.env.REACT_APP_SERVER_URL);
     setClient(socket);
@@ -36,7 +39,7 @@ function App() {
     });
 
     socket.on('game_ended', (leaderboard) => {
-      console.log('results', leaderboard);
+      setLeaderboard(leaderboard);
     });
   }, []);
 
@@ -51,6 +54,7 @@ function App() {
               <Route path="/start" element={<Start />} />
               <Route path="/game" element={<Game />} />
               <Route path="/next-question" element={<NextQuestion />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
             </Routes>
           </Screen>
         </WebsocketClientContext.Provider>
