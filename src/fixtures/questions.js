@@ -1,10 +1,10 @@
 const questions = [
   {
-    title: "Hedy Lamarr fue una inventora que creó un sistema que luego inspiraría el wifi. ¿Qué otra profesión tenía?",
+    title: "¿Qué porcentaje representan las mujeres dentro del sector de la tecnología a nivel mundial?",
     options: [
-      "Actriz de Hollywood",
-      "Física",
-      "Abogada",
+      "24%",
+      "13%",
+      "50%",
     ],
     answer: 0,
   },
@@ -18,11 +18,11 @@ const questions = [
     answer: 2
   },
   {
-    title: "¿Qué porcentaje representan las mujeres dentro del sector de la tecnología a nivel mundial?",
+    title: "¿Quién lideró el desarrollo del algoritmo utilizado para captar las primeras imágenes de un agujero negro?",
     options: [
-      "24%",
-      "13%",
-      "50%",
+      "Katie Bouman",
+      "Stephen Hawkins",
+      "Margaret Hamilton",
     ],
     answer: 0,
   },
@@ -36,6 +36,15 @@ const questions = [
     answer: 2
   },
   {
+    title: "¿Quién introdujo las bases para desarrollar una interfaz gráfica de usuario?",
+    options: [
+      "Steve Jobs",
+      "Adele Goldberg",
+      "Grace Murray Hopper",
+    ],
+    answer: 1,
+  },
+  {
     title: "¿Quién fue la primera persona en crear un algoritmo para ser procesado por una máquina?",
     options: [
       "Audrey Tang",
@@ -45,13 +54,13 @@ const questions = [
     answer: 1,
   },
   {
-    title: "¿Quién introdujo las bases para desarrollar una interfaz gráfica de usuario?",
+    title: "Hedy Lamarr fue una inventora que creó un sistema que luego inspiraría el wifi. ¿Qué otra profesión tenía?",
     options: [
-      "Steve Jobs",
-      "Adele Goldberg",
-      "Grace Murray Hopper",
+      "Actriz de Hollywood",
+      "Física",
+      "Abogada",
     ],
-    answer: 1,
+    answer: 0,
   },
   {
     title: "¿Que mujer es considerada como la madre de internet además de ser la creadora del protocolo STP (utilizado en las primeras redes de computadoras)?",
@@ -62,15 +71,6 @@ const questions = [
     ],
     answer: 0,
   },
-  { 
-    title: "¿Quién creó el primer lenguaje de programación para niños?",
-    options: [
-      "Edith Clarke",
-      "Cynthia Solomon",
-      "Larry Page",
-    ],
-    answer: 1,
-  },
   {
     title: "¿A quien le debemos poder llegar a cualquier parte del mundo sin cable gracias al GPS, Bluetooth y Wi-Fi?",
     options: [
@@ -80,15 +80,15 @@ const questions = [
     ],
     answer: 2
   },
-  { 
-    title: "¿Quién lideró el desarrollo del algoritmo utilizado para captar las primeras imágenes de un agujero negro?",
+  {
+    title: "¿Quién creó el primer lenguaje de programación para niños?",
     options: [
-      "Katie Bouman",
-      "Stephen Hawkins",
-      "Margaret Hamilton",
+      "Edith Clarke",
+      "Cynthia Solomon",
+      "Larry Page",
     ],
-    answer: 0,
-  }
+    answer: 1,
+  },
 ]
 
 export default questions;
