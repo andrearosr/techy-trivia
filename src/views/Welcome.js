@@ -45,13 +45,7 @@ function Welcome() {
       setError('Debes completar esta información para poder continuar.');
       return;
     }
-
-    setPlayer({
-      ...player,
-      name,
-    });
     socket.emit('player_joined', name);
-    navigate('/start');
   }
 
   return (

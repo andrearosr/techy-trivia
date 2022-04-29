@@ -33,11 +33,16 @@ function App() {
     const socket = socketIOClient(process.env.REACT_APP_SERVER_URL);
     setClient(socket);
 
-    socket.on('player_added', (id) => {
+    socket.on('player_added', ({ id, name }) => {
       setPlayer({
-        ...player,
+        name,
         id,
       });
+      navigate('/start');
+    });
+
+    socket.on('player_rejected', () => {
+      alert('Juego en marcha!');
     });
 
     socket.on('game_ended', (leaderboard) => {
