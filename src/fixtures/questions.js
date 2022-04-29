@@ -1,14 +1,5 @@
 const questions = [
   {
-    title: "¿Qué porcentaje representan las mujeres dentro del sector de la tecnología a nivel mundial?",
-    options: [
-      "24%",
-      "13%",
-      "50%",
-    ],
-    answer: 0,
-  },
-  {
     title: "Ida Holz es una ingeniera, informática, profesora e investigadora. Se la conoce como la madre de internet. ¿En qué país nació?",
     options: [
       "Estados Unidos",
@@ -18,7 +9,16 @@ const questions = [
     answer: 2
   },
   {
-    title: "¿Quién lideró el desarrollo del algoritmo utilizado para captar las primeras imágenes de un agujero negro?",
+    title: "¿Qué porcentaje representan las mujeres dentro del sector de la tecnología a nivel mundial?",
+    options: [
+      "24%",
+      "13%",
+      "50%",
+    ],
+    answer: 0,
+  },
+  {
+    title: "¿Quién lideró el desarrollo del programa utilizado para captar las primeras imágenes de un agujero negro?",
     options: [
       "Katie Bouman",
       "Stephen Hawkins",
@@ -36,7 +36,7 @@ const questions = [
     answer: 2
   },
   {
-    title: "¿Quién introdujo las bases para desarrollar una interfaz gráfica de usuario?",
+    title: "¿Quién introdujo las bases para que todas las personas pudieran utilizar las computadoras sin saber de programación?",
     options: [
       "Steve Jobs",
       "Adele Goldberg",
@@ -45,7 +45,7 @@ const questions = [
     answer: 1,
   },
   {
-    title: "¿Quién fue la primera persona en crear un algoritmo para ser procesado por una máquina?",
+    title: "¿Quién fue la primera persona en crear un programa para ser procesado por una máquina?",
     options: [
       "Audrey Tang",
       "Ada Lovelace",
@@ -63,7 +63,7 @@ const questions = [
     answer: 0,
   },
   {
-    title: "¿Que mujer es considerada como la madre de internet además de ser la creadora del protocolo STP (utilizado en las primeras redes de computadoras)?",
+    title: "Una mujer creó un sistema que transformó las redes de computadoras e hizo posible el internet tal como lo conocemos hoy. ¿Cuál es su nombre?",
     options: [
       "Radia Perlman",
       "Susan Kare",
