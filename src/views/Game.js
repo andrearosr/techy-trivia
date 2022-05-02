@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 import questionsFx from '../fixtures/questions';
 import { Container, Subtitle, Text, GradientText, Button } from '../components';
 import { playerState, roundState } from '../state/game';
-import WebsocketContext from '../websocket_context';
 
 const AnswerContainer = styled.div`
   height: 60px;
@@ -32,7 +31,6 @@ const GradientTimer = styled(GradientText)`
 function Game() {
   const navigate = useNavigate();
   const theme = useTheme();
-  const socket = useContext(WebsocketContext);
   const [round, setRound] = useRecoilState(roundState);
   const [player] = useRecoilState(playerState);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -59,10 +57,6 @@ function Game() {
     return () => {
       if (!selectedAnswer) {
         setSelectedAnswer(option);
-        socket.emit('player_answer', {
-          id: player.id,
-          point: option === question.answer ? 1 : 0,
-        });
       }
     }
   }

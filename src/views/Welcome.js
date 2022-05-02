@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 import * as Icon from '@emotion-icons/ionicons-sharp';
 import { Container, Title, Subtitle, Text, Input, Button } from '../components';
 import { isAdminState, playerState } from '../state/game';
-import WebsocketContext from '../websocket_context';
 
 const ErrorMessage = styled(Text)`
   align-self: flex-start;
@@ -16,7 +15,6 @@ const ErrorMessage = styled(Text)`
 function Welcome() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const socket = useContext(WebsocketContext);
   const [search] = useSearchParams(); 
   const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
   const [player, setPlayer] = useRecoilState(playerState);
@@ -45,7 +43,6 @@ function Welcome() {
       setError('Debes completar esta información para poder continuar.');
       return;
     }
-    socket.emit('player_joined', name);
   }
 
   return (

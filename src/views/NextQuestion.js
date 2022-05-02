@@ -3,13 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { Container, Text, GradientText, Subtitle, Title } from '../components';
 import { roundState } from '../state/game';
-import WebsocketClientContext from '../websocket_context';
 
 const ROUNDS_INDEX = 9;
 
 function NextQuestion() {
   const navigate = useNavigate();
-  const socket = useContext(WebsocketClientContext);
   const [timer, setTimer] = useState(3);
   const [round, setRound] = useRecoilState(roundState);
 
@@ -24,7 +22,6 @@ function NextQuestion() {
           setRound(round + 1);
           navigate('/game', { replace: true });
         } else {
-          socket.emit('end');
           navigate('/leaderboard', { replace: true });
         }
       }

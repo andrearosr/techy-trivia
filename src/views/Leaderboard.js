@@ -5,7 +5,6 @@ import TechyLogo from '../assets/techy.png';
 import UruitLogo from '../assets/logo.png';
 import { useRecoilState } from 'recoil';
 import { isAdminState, leaderboardState } from '../state/game';
-import WebsocketClientContext from '../websocket_context';
 
 const LogoContainer = styled.div`
   display: flex;
@@ -41,12 +40,10 @@ const ScoreText = styled(Text)`
 const Image = styled.img``;
 
 function Leaderboard() {
-  const socket = useContext(WebsocketClientContext);
   const [leaderboard] = useRecoilState(leaderboardState);
   const [isAdmin] = useRecoilState(isAdminState);
 
   const handleRestart = () => {
-    socket.emit('restart');
   }
 
   return (
