@@ -12,7 +12,6 @@ function NextQuestion() {
   const [round, setRound] = useRecoilState(roundState);
   const [player] = useRecoilState(playerState);
   const [leaderboard, setLeaderboardState] = useRecoilState(leaderboardState);
-  console.log(leaderboard);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -25,6 +24,7 @@ function NextQuestion() {
           setRound(round + 1);
           navigate('/game', { replace: true });
         } else {
+          setRound(0);
           setLeaderboardState([
             ...leaderboard,
             player,

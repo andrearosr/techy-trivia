@@ -42,11 +42,13 @@ const Image = styled.img``;
 function Leaderboard() {
   const navigate = useNavigate();
   const [player] = useRecoilState(playerState);
-  const [leaderboard] = useRecoilValue(orderedLeaderboardState);
+  const leaderboard = useRecoilValue(orderedLeaderboardState);
 
   const handleRestart = () => {
     navigate('/');
   }
+
+  console.log(leaderboard)
 
   return (
     <>
@@ -55,7 +57,7 @@ function Leaderboard() {
         <GradientText>
           {player.points}
         </GradientText>
-        {leaderboard.length > 0 && (
+        {leaderboard.length > 1 && (
           <>
             <Subtitle>Puntuaciones:</Subtitle>
             {leaderboard.map(p => (

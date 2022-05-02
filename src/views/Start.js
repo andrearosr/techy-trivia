@@ -31,7 +31,7 @@ function Start() {
         <Title>Ya casi estamos</Title>
         <Subtitle>
           {timer >= 0 && "El juego consiste en responder todas las preguntas, la participante que conteste mayor cantidad de preguntas correctas será la ganadora"}
-          {timer < 0 && "Espera un momento mientras todas las personas se alistan para jugar..."}
+          {timer < 0 && "Cuando estés listo, presiona el botón para comenzar..."}
         </Subtitle>
       </Container>
 
