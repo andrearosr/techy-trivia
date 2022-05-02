@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 const roundState = atom({
   key: 'round',
@@ -19,4 +19,13 @@ const leaderboardState = atom({
   default: [],
 });
 
-export { roundState, playerState, leaderboardState };
+const orderedLeaderboardState = selector({
+  key: 'leaderboard',
+  get: ({ get }) => {
+    const list = get(leaderboardState);
+
+    return list.sort((a, b) => b.points - a.points);
+  }
+})
+
+export { roundState, playerState, leaderboardState, orderedLeaderboardState};

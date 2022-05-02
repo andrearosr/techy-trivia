@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Container, Title, Text, Button, GradientText, Subtitle } from '../components';
 import TechyLogo from '../assets/techy.png';
 import UruitLogo from '../assets/logo.png';
-import { useRecoilState } from 'recoil';
-import { leaderboardState, playerState } from '../state/game';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { orderedLeaderboardState, playerState } from '../state/game';
 import { useNavigate } from 'react-router-dom';
 
 const LogoContainer = styled.div`
@@ -42,7 +42,7 @@ const Image = styled.img``;
 function Leaderboard() {
   const navigate = useNavigate();
   const [player] = useRecoilState(playerState);
-  const [leaderboard] = useRecoilState(leaderboardState);
+  const [leaderboard] = useRecoilValue(orderedLeaderboardState);
 
   const handleRestart = () => {
     navigate('/');
