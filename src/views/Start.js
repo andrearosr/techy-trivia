@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import Logo from '../assets/iso.png';
 import { Container, Title, Subtitle, GradientText, Button } from '../components';

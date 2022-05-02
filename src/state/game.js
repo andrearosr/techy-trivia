@@ -22,9 +22,7 @@ const leaderboardState = atom({
 const orderedLeaderboardState = selector({
   key: 'orderedLeaderboard',
   get: ({ get }) => {
-    const list = get(leaderboardState);
-
-    return list.sort((a, b) => b.points - a.points);
+    return [...get(leaderboardState)].sort((a, b) => b.points - a.points);
   }
 })
 

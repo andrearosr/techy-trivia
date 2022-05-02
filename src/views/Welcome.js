@@ -5,7 +5,7 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import * as Icon from '@emotion-icons/ionicons-sharp';
 import { Container, Title, Subtitle, Text, Input, Button } from '../components';
-import { isAdminState, playerState } from '../state/game';
+import { playerState } from '../state/game';
 
 const ErrorMessage = styled(Text)`
   align-self: flex-start;
