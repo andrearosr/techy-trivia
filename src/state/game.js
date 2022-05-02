@@ -20,7 +20,7 @@ const leaderboardState = atom({
 });
 
 const orderedLeaderboardState = selector({
-  key: 'leaderboard',
+  key: 'orderedLeaderboard',
   get: ({ get }) => {
     const list = get(leaderboardState);
 

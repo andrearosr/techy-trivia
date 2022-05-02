@@ -12,6 +12,7 @@ function NextQuestion() {
   const [round, setRound] = useRecoilState(roundState);
   const [player] = useRecoilState(playerState);
   const [leaderboard, setLeaderboardState] = useRecoilState(leaderboardState);
+  console.log(leaderboard);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
