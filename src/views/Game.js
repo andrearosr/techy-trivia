@@ -32,7 +32,7 @@ function Game() {
   const navigate = useNavigate();
   const theme = useTheme();
   const [round, setRound] = useRecoilState(roundState);
-  const [player] = useRecoilState(playerState);
+  const [player, setPlayer] = useRecoilState(playerState);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [timer, setTimer] = useState(15);
 
@@ -56,7 +56,12 @@ function Game() {
   function pickAnswer(option) {
     return () => {
       if (!selectedAnswer) {
+        const point = option === question.answer ? 1 : 0;
         setSelectedAnswer(option);
+        setPlayer({
+          ...player,
+          points: player.points + point,
+        })
       }
     }
   }

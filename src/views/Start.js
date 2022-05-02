@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import Logo from '../assets/iso.png';
 import { Container, Title, Subtitle, GradientText, Button } from '../components';
 import { spin } from '../GlobalStyles';
-import { isAdminState } from '../state/game';
 
 const LogoSpin = styled.img`
   animation: ${spin} 3s ease-in-out infinite;
@@ -14,9 +13,9 @@ const LogoSpin = styled.img`
 function Start() {
   const navigate = useNavigate();
   const [timer, setTimer] = useState(-1);
-  const [isAdmin] = useRecoilState(isAdminState);
 
   const start = () => {
+    setTimer(3);
   }
 
   useEffect(() => {
@@ -44,7 +43,7 @@ function Start() {
         {timer === 0 && <GradientText fontSize="40px">¡Empezamos!</GradientText>}
       </Container>
 
-      {timer < 0 && isAdmin && (
+      {timer < 0 && (
         <Button onClick={start}>
           Comenzar
         </Button>

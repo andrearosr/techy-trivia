@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -15,16 +15,10 @@ const ErrorMessage = styled(Text)`
 function Welcome() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [search] = useSearchParams(); 
-  const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
   const [player, setPlayer] = useRecoilState(playerState);
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState('');
   const [error, setError] = useState();
-
-  useEffect(() => {
-    setIsAdmin(search.get('admin'));
-  }, [search]);
 
   function handleChange(e) {
     setName(e.target.value);
@@ -43,6 +37,12 @@ function Welcome() {
       setError('Debes completar esta información para poder continuar.');
       return;
     }
+
+    setPlayer({
+      name,
+      points: 0,
+    })
+    navigate('/start');
   }
 
   return (

@@ -1,10 +1,10 @@
-import { useContext } from 'react';
 import styled from '@emotion/styled';
-import { Container, Title, Text, Button } from '../components';
+import { Container, Title, Text, Button, GradientText, Subtitle } from '../components';
 import TechyLogo from '../assets/techy.png';
 import UruitLogo from '../assets/logo.png';
 import { useRecoilState } from 'recoil';
-import { isAdminState, leaderboardState } from '../state/game';
+import { leaderboardState, playerState } from '../state/game';
+import { useNavigate } from 'react-router-dom';
 
 const LogoContainer = styled.div`
   display: flex;
@@ -40,30 +40,39 @@ const ScoreText = styled(Text)`
 const Image = styled.img``;
 
 function Leaderboard() {
+  const navigate = useNavigate();
+  const [player] = useRecoilState(playerState);
   const [leaderboard] = useRecoilState(leaderboardState);
-  const [isAdmin] = useRecoilState(isAdminState);
 
   const handleRestart = () => {
+    navigate('/');
   }
 
   return (
     <>
       <Container center flex>
-        <Title>Puntuaciones:</Title>
-        {leaderboard.map(player => (
-          <ScoreText key={player.name}>
-            {player.name} ({player.points} {player.points === 1 ? 'punto' : 'puntos'})
-          </ScoreText>
-        ))}
+        <Title>Tu puntuación:</Title>
+        <GradientText>
+          {player.points}
+        </GradientText>
+        {leaderboard.length > 0 && (
+          <>
+            <Subtitle>Puntuaciones:</Subtitle>
+            {leaderboard.map(p => (
+              <ScoreText key={p.name}>
+                {p.name} ({p.points} {p.points === 1 ? 'punto' : 'puntos'})
+              </ScoreText>
+            ))}
+          </>
+        )}
+        
       </Container>
 
-      {isAdmin && (
-        <Container>
-          <Button onClick={handleRestart}>
-            Reiniciar
-          </Button>
-        </Container>
-      )}
+      <Container>
+        <Button onClick={handleRestart}>
+          Reiniciar
+        </Button>
+      </Container>
 
       <LogoContainer>
         <Image src={TechyLogo} alt="Techy por el dia" />

@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { Container, Text, GradientText, Subtitle, Title } from '../components';
-import { roundState } from '../state/game';
+import { leaderboardState, playerState, roundState } from '../state/game';
 
 const ROUNDS_INDEX = 9;
 
@@ -10,6 +10,8 @@ function NextQuestion() {
   const navigate = useNavigate();
   const [timer, setTimer] = useState(3);
   const [round, setRound] = useRecoilState(roundState);
+  const [player] = useRecoilState(playerState);
+  const [leaderboard, setLeaderboardState] = useRecoilState(leaderboardState);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -22,6 +24,10 @@ function NextQuestion() {
           setRound(round + 1);
           navigate('/game', { replace: true });
         } else {
+          setLeaderboardState([
+            ...leaderboard,
+            player,
+          ])
           navigate('/leaderboard', { replace: true });
         }
       }
