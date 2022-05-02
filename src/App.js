@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Global, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -8,8 +8,6 @@ import Welcome from './views/Welcome';
 import Start from './views/Start';
 import Game from './views/Game';
 import NextQuestion from './views/NextQuestion';
-import { useRecoilState } from 'recoil';
-import { leaderboardState, playerState, roundState } from './state/game';
 import Leaderboard from './views/Leaderboard';
 
 const Root = styled.div`
@@ -22,11 +20,9 @@ const Root = styled.div`
 
 function App() {
   const navigate = useNavigate();
-  const [player, setPlayer] = useRecoilState(playerState);
-  const [leaderboard, setLeaderboard] = useRecoilState(leaderboardState);
-  const [round, setRound] = useRecoilState(roundState);
 
   useEffect(() => {
+    navigate('/');
   }, []);
 
   return (
