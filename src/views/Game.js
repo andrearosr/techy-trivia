@@ -58,7 +58,6 @@ function Game() {
       if (!selectedAnswer) {
         const point = option === question.answer ? 1 : 0;
         setSelectedAnswer(option);
-        console.log(player.points)
         setPlayer({
           ...player,
           points: player.points + point,

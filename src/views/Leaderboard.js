@@ -48,8 +48,6 @@ function Leaderboard() {
     navigate('/');
   }
 
-  console.log(leaderboard)
-
   return (
     <>
       <Container center flex>
